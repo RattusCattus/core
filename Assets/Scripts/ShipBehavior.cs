@@ -18,7 +18,7 @@ public class ShipBehavior : MonoBehaviour
     void FixedUpdate() => MoveAndRotate();
 
     void MoveAndRotate() {
-        body.velocity = direction * flightSpeed;
+        body.AddForce(direction * flightSpeed);
 
         if (direction.magnitude > 0) {
             if (direction.x < 0) {

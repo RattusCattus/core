@@ -1554,7 +1554,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 1729227825}
   spriteRenderer: {fileID: 1729227821}
-  flightSpeed: 4
+  flightSpeed: 6
   rotationSpeed: 20
   frameRate: 1
 --- !u!60 &1729227827
