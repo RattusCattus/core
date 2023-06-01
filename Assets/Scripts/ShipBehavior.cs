@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public class ShipController : MonoBehaviour
+public class ShipBehavior : MonoBehaviour
 {
     public Rigidbody2D body;    
     public SpriteRenderer spriteRenderer;
@@ -32,5 +33,12 @@ public class ShipController : MonoBehaviour
 
     float getAngle(Vector2 vector2) {
         return 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * Mathf.Sign(vector2.x));
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Earf") {
+            SceneManager.LoadScene("planet1");
+        }
     }
 }
