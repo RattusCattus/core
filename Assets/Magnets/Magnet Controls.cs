@@ -60,6 +60,17 @@ public partial class @MagnetControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""896f559d-98ba-4a57-b8b6-724c81085a70"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartMagnet"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6ec4be92-1d0e-4013-8c81-b3ce300af40c"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",

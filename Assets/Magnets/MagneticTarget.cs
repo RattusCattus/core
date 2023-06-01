@@ -9,7 +9,7 @@ public class MagneticTarget : MonoBehaviour
         Vector2 mousePos = value.Get<Vector2>();
         RaycastHit hit;
 
-        Debug.Log("hell yeah");
+        Debug.Log(mousePos);
         
         if (Physics.Raycast(new Vector3(mousePos.x, mousePos.y, 1), new Vector3(0, -90, 0), out hit))
         {
