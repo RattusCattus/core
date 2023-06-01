@@ -20,7 +20,7 @@ public class PlayerMagnet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(destination);
+        //Debug.Log(destination);
         if (isMagneting)
         {
             rb.AddForce(new Vector2(power/(destination.x - transform.position.x), power/(destination.y - transform.position.y)));

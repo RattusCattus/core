@@ -31,7 +31,7 @@ public partial class @MagnetControls: IInputActionCollection2, IDisposable
                     ""name"": ""StartMagnet"",
                     ""type"": ""Value"",
                     ""id"": ""cf2044be-58da-4107-803a-44fb7e8a6382"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

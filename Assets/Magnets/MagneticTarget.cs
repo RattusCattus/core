@@ -5,20 +5,7 @@ using UnityEngine.InputSystem;
 
 public class MagneticTarget : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void onStartMagnet(InputValue value)
-    {
+    void OnStartMagnet(InputValue value) {
         Vector2 mousePos = value.Get<Vector2>();
         RaycastHit hit;
 
