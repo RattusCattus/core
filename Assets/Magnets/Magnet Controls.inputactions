@@ -1,0 +1,54 @@
+{
+    "name": "Magnet Controls",
+    "maps": [
+        {
+            "name": "Magnet",
+            "id": "fc203ec1-ca7e-4814-976f-42ccddabf27f",
+            "actions": [
+                {
+                    "name": "StartMagnet",
+                    "type": "Value",
+                    "id": "cf2044be-58da-4107-803a-44fb7e8a6382",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CancelMagnet",
+                    "type": "Button",
+                    "id": "d5b3e477-7811-416d-8867-90b1a352fa48",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4f5902fd-8264-45de-b9ce-f76b065e1388",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartMagnet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ec4be92-1d0e-4013-8c81-b3ce300af40c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CancelMagnet",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
