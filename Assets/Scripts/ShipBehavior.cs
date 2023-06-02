@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,8 +13,6 @@ public class ShipBehavior : MonoBehaviour
     public float frameRate;
 
     Vector2 direction;
-
-    void Awake() => body = GetComponent<Rigidbody2D>();
 
     void FixedUpdate() => MoveAndRotate();
 
@@ -35,10 +34,12 @@ public class ShipBehavior : MonoBehaviour
         return 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * Mathf.Sign(vector2.x));
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Earf") {
-            SceneManager.LoadScene("planet1");
+    // Load planet on contact
+    void OnTriggerEnter2D(Collider2D planet) {
+        if (planet.gameObject.tag == "Earf") {
+            SceneManager.LoadScene(planet.gameObject.tag);
+        } else {
+            Debug.Log("Fake planet...");
         }
     }
 }
