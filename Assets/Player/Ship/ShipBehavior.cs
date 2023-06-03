@@ -5,14 +5,15 @@ public class ShipBehavior : MonoBehaviour
 {
     public Rigidbody2D body;    
     public SpriteRenderer spriteRenderer;
+    public Animator animator;
 
     public float flightSpeed;
     public float rotationSpeed;
-    public float frameRate;
 
     Vector2 direction;
 
     void FixedUpdate() => MoveAndRotate();
+    void Update() => Animate();
 
     void MoveAndRotate() {
         body.AddForce(direction * flightSpeed);
@@ -23,6 +24,14 @@ public class ShipBehavior : MonoBehaviour
             } else {
                 transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, getAngle(direction)), Time.deltaTime * rotationSpeed);
             }
+        }
+    }
+
+    void Animate() {
+        if (direction.magnitude > 0) {
+            animator.SetBool("isFlying", true);
+        } else {
+            animator.SetBool("isFlying", false);
         }
     }
 

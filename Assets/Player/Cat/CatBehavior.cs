@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +31,7 @@ public class CatBehavior : MonoBehaviour
     }
     
     void Animate() {
+        animator.SetInteger("random", Random.Range(1, 4));
         if (directionHoz.magnitude > 0) {
             animator.SetBool("isWalking", true);
         } else {
@@ -46,11 +45,15 @@ public class CatBehavior : MonoBehaviour
 
     // move rigidbody based on input
     void Move() {
-        body.AddForce((new Vector2(directionHoz.x, 0f) * walkingSpeed), ForceMode2D.Impulse);
-
         if (directionHoz.x > 0) {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            body.AddForce(new Vector2(1f, 0f) * walkingSpeed);
+        } else {
+            body.AddForce(new Vector2(-1f, 0f) * walkingSpeed);
         }
+        
+        // if (directionHoz.x > 0) {
+        //     spriteRenderer.flipX = !spriteRenderer.flipX;
+        // }
     }
 
     // rotate transform based on direction of planet
