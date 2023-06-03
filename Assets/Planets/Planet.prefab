@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 995031666906758896}
+  - component: {fileID: 3444963916083129642}
   - component: {fileID: 995031666906758898}
   - component: {fileID: 995031666906758897}
+  - component: {fileID: 761047680818590253}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -33,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3444963916083129642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995031666906758911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a580b1bef6960c1b5accbf7cd33fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators: []
+  planet: {fileID: 995031666906758911}
+  cat: {fileID: 6034051683522660315, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}
+  ship: {fileID: 4124944974444192384, guid: d545cd28ed6c2c97ca6febb3cbd4fc5b, type: 3}
 --- !u!212 &995031666906758898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,4 +118,20 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 12
+  m_Radius: 25
+--- !u!58 &761047680818590253
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995031666906758911}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 7.5

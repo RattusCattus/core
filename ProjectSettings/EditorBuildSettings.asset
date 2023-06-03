@@ -9,13 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/space.unity
+    path: Assets/Scenes/Space.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Earf.unity
     guid: 7494ec4a7029ea9608dfd30fe5dbc9db
   - enabled: 1
-    path: Assets/Scenes/ship.unity
+    path: Assets/Scenes/TestPlayer.unity
+    guid: e85536e41a9509201862307afb84d2f7
+  - enabled: 1
+    path: Assets/Scenes/Ship.unity
     guid: a2522088c44de4c2d8a86548d0a68b3e
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 9d4b1c5a8e46e6272853d71fbb7289b6, type: 2}
