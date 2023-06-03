@@ -19,8 +19,9 @@ public class Planet : MonoBehaviour
         if (collider.gameObject.tag == "Ship") {
             Debug.Log("You're orbiting " + planet.name + "!");
             foreach (Animator animator in animators) { animator.enabled = true; }
+
+            // Move to ShipBehavior
             Instantiate(cat, ship.transform.position, Quaternion.identity);
-            Destroy(ship);
         }
     }
 
