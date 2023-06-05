@@ -5,16 +5,24 @@ using UnityEngine.InputSystem;
 
 public class MagneticTarget : MonoBehaviour
 {
-    void OnStartMagnet(InputValue value) {
-        Vector2 mousePos = value.Get<Vector2>();
+    void OnStartMagnet() {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         RaycastHit hit;
-
-        Debug.Log(mousePos);
         
-        if (Physics.Raycast(new Vector3(mousePos.x, mousePos.y, 1), new Vector3(0, -90, 0), out hit))
+        mousePos.z = 0;
+
+        Debug.Log(Camera.main.transform.position);
+        Debug.Log(mousePos);
+        Debug.Log(mousePos - Camera.main.transform.position);
+        
+        Debug.Log(Physics.Raycast(Camera.main.transform.position, (mousePos - Camera.main.transform.position)/2));
+
+        if (Physics.Raycast(Camera.main.transform.position, mousePos - Camera.main.transform.position, out hit))
         {
+            Debug.Log("Hell yeah");
             if (hit.collider == GetComponent<Collider>()) 
             {
+                Debug.Log(mousePos);
                 PlayerMagnet.isMagneting = true;
                 PlayerMagnet.destination = new Vector2(transform.position.x, transform.position.y);
             }

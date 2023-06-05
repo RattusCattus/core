@@ -29,9 +29,9 @@ public partial class @MagnetControls: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""StartMagnet"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""cf2044be-58da-4107-803a-44fb7e8a6382"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -51,17 +51,6 @@ public partial class @MagnetControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""4f5902fd-8264-45de-b9ce-f76b065e1388"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StartMagnet"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""896f559d-98ba-4a57-b8b6-724c81085a70"",
-                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
