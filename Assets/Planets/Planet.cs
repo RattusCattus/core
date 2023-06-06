@@ -21,7 +21,7 @@ public class Planet : MonoBehaviour
             foreach (Animator animator in animators) { animator.enabled = true; }
 
             // Move to ShipBehavior
-            Instantiate(cat, ship.transform.position, Quaternion.identity);
+            //Instantiate(cat, ship.transform.position, Quaternion.identity);
         }
     }
 
