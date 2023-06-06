@@ -6,6 +6,7 @@ public class CatBehavior : MonoBehaviour
     public Transform planet;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+
     
     public float gravityPull;
     public float walkingSpeed;
@@ -25,7 +26,6 @@ public class CatBehavior : MonoBehaviour
 
     void FixedUpdate() {
         // simulate gravity
-        body.AddForce(GetGravityDirection() * gravityPull);
         Move();
         Rotate();
     }
@@ -45,10 +45,14 @@ public class CatBehavior : MonoBehaviour
 
     // move rigidbody based on input
     void Move() {
-        if (directionHoz.x > 0) {
+        if (Mouse.current.leftButton.isPressed) {
+            if (directionHoz.x > 0) {
             body.AddForce(new Vector2(1f, 0f) * walkingSpeed);
-        } else {
+            } else {
             body.AddForce(new Vector2(-1f, 0f) * walkingSpeed);
+            }
+        } else {
+            body.AddForce(GetGravityDirection()* gravityPull);
         }
         
         // if (directionHoz.x > 0) {

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ship
+  - Planet
   layers:
   - Default
   - TransparentFX
