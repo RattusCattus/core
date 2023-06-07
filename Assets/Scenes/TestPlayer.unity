@@ -713,11 +713,19 @@ PrefabInstance:
       objectReference: {fileID: 573265901}
     - target: {fileID: 6034051683522660316, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}
       propertyPath: gravityPull
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6034051683522660316, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}
       propertyPath: walkingSpeed
-      value: 20
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034051683522660319, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034051683522660319, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}

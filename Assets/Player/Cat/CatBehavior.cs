@@ -49,21 +49,23 @@ public class CatBehavior : MonoBehaviour
 
     // move rigidbody based on input
     void Move() {
-        float angle = GetRotation() - 180;
+        //float angle = GetRotation() - 180;
         if (inputDirection.x > 0) {
-            // make force direction normal to the surface of the circle |0
-            body.AddForce(new Vector2(1f, 0f) * walkingSpeed);
+            // addforce perpendicular to the direction of gravity
+            body.AddForce(Vector2.Perpendicular(GetGravityDirection()*walkingSpeed));
         } else if (inputDirection.x < 0){
-            body.AddForce(new Vector2(-1f, 0f) * walkingSpeed);
+            body.AddForce(Vector2.Perpendicular(GetGravityDirection()* -walkingSpeed));
         } else {
             // stop the body when not moving??
-            body.velocity = new Vector2(0f, 0f);
+            body.velocity = GetGravityDirection() * gravityPull;
         }
         
         // flip sprite based on direction of travel
-        // if (directionHoz.x > 0) {
-        //     spriteRenderer.flipX = !spriteRenderer.flipX;
-        // }
+        if (inputDirection.x > 0) {
+            spriteRenderer.flipX = true;
+        } else {
+            spriteRenderer.flipX = false;
+        }
     }
 
     // rotate transform based on direction of planet
