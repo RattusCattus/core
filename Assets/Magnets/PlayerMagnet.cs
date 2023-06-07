@@ -23,7 +23,19 @@ public class PlayerMagnet : MonoBehaviour
         //Debug.Log(destination);
         if (isMagneting)
         {
-            rb.AddForce(new Vector2(power/(destination.x - transform.position.x), power/(destination.y - transform.position.y)));
+            float angle = Vector2.Angle(transform.position, destination);
+            Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+
+            float distance = Mathf.Sqrt(Mathf.Pow(dir.x - transform.position.x, 2) + Mathf.Pow(dir.y - transform.position.y, 2));
+
+            Debug.Log(angle);
+            Debug.Log(dir);
+            rb.AddForce(dir * power/distance);
         }
+    }
+
+    void OnCancelMagnet()
+    {
+        isMagneting = false;
     }
 }
