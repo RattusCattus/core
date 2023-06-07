@@ -6,7 +6,6 @@ public class CatBehavior : MonoBehaviour
     public Transform planet;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-
     
     public float gravityPull;
     public float walkingSpeed;
@@ -14,7 +13,7 @@ public class CatBehavior : MonoBehaviour
 
     // private vars
     Rigidbody2D body;
-    Vector2 directionHoz;
+    Vector2 inputDirection;
 
     void Awake() => body = GetComponent<Rigidbody2D>();
 
@@ -22,17 +21,20 @@ public class CatBehavior : MonoBehaviour
         Animate();
 
         // Debug.Logs go here so as not to slow down physics simulations??
+
+        Debug.Log(GetRotation()-180);
     }
 
     void FixedUpdate() {
         // simulate gravity
+        body.AddForce(GetGravityDirection() * gravityPull);
         Move();
         Rotate();
     }
     
     void Animate() {
         animator.SetInteger("random", Random.Range(1, 4));
-        if (directionHoz.magnitude > 0) {
+        if (inputDirection.magnitude > 0) {
             animator.SetBool("isWalking", true);
         } else {
             animator.SetBool("isWalking", false);
@@ -40,21 +42,25 @@ public class CatBehavior : MonoBehaviour
     }
     // InputSystem functions
     void OnMove(InputValue value) {
-        directionHoz = value.Get<Vector2>();
+        inputDirection = value.Get<Vector2>();
     }
+
+    // OnTap
 
     // move rigidbody based on input
     void Move() {
-        if (Mouse.current.leftButton.isPressed) {
-            if (directionHoz.x > 0) {
+        float angle = GetRotation() - 180;
+        if (inputDirection.x > 0) {
+            // make force direction normal to the surface of the circle |0
             body.AddForce(new Vector2(1f, 0f) * walkingSpeed);
-            } else {
+        } else if (inputDirection.x < 0){
             body.AddForce(new Vector2(-1f, 0f) * walkingSpeed);
-            }
         } else {
-            body.AddForce(GetGravityDirection()* gravityPull);
+            // stop the body when not moving??
+            body.velocity = new Vector2(0f, 0f);
         }
         
+        // flip sprite based on direction of travel
         // if (directionHoz.x > 0) {
         //     spriteRenderer.flipX = !spriteRenderer.flipX;
         // }
@@ -62,15 +68,18 @@ public class CatBehavior : MonoBehaviour
 
     // rotate transform based on direction of planet
     void Rotate() {
-        // how does this work?
-        Vector2 gravityDirection = GetGravityDirection();
-        float angle = 360 - (Mathf.Atan2(gravityDirection.x, gravityDirection.y) * Mathf.Rad2Deg * Mathf.Sign(gravityDirection.x));
-
-        if (gravityDirection.x < 0) {
+        float angle = GetRotation();
+        if (GetGravityDirection().x < 0) {
             transform.rotation = Quaternion.Euler(0f, 0f, -angle);
         } else {
             transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
         }
+    }
+
+    float GetRotation() {
+        // how does this work?
+        Vector2 gravityDirection = GetGravityDirection();
+        return 360 - (Mathf.Atan2(gravityDirection.x, gravityDirection.y) * Mathf.Rad2Deg * Mathf.Sign(gravityDirection.x));
     }
 
     Vector2 GetGravityDirection() {
