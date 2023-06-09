@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMagnet : MonoBehaviour
@@ -48,7 +46,11 @@ public class PlayerMagnet : MonoBehaviour
                 force.y = dir.y;
             }
 
-            rb.AddRelativeForce(force * power / Mathf.Pow(distance, mode));
+            rb.AddForce(force * power / Mathf.Pow(distance, mode));
+        }
+
+        if (ShipBehavior.isDocked) {
+            isMagneting = false;
         }
     }
 

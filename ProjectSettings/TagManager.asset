@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ship
   - Planet
+  - Dock
+  - Asteroid
   layers:
   - Default
   - TransparentFX

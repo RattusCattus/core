@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 4124944974444192386}
   - component: {fileID: 4124944974444192385}
   - component: {fileID: 4124944974444192414}
+  - component: {fileID: 6525146727910545210}
   - component: {fileID: 4124944974444192387}
   - component: {fileID: 4124944974444192413}
   - component: {fileID: 578204383960154028}
@@ -179,11 +180,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 4124944974444192413}
-  spriteRenderer: {fileID: 4124944974444192385}
-  animator: {fileID: 4456672382534604362}
+  magnetCollider: {fileID: 0}
+  cat: {fileID: 6034051683522660315, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}
   flightSpeed: 7
   rotationSpeed: 20
-  frameRate: 1
+--- !u!114 &6525146727910545210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4124944974444192384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9f38efef58c6a409ea54c90b582e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 100
+  mode: 0
 --- !u!114 &4124944974444192387
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,16 +3,31 @@ using UnityEngine.InputSystem;
 
 public class ShipBehavior : MonoBehaviour
 {
-    public Rigidbody2D body;    
-    public SpriteRenderer spriteRenderer;
-    public Animator animator;
+    public Rigidbody2D body;
+    public Collider2D magnetCollider;
+    public GameObject cat;
 
     public float flightSpeed;
     public float rotationSpeed;
+    public static bool isDocked;
 
     Vector2 direction;
+    PlayerInput shipInput;
+    SpriteRenderer spriteRenderer;
+    Collider2D shipCollider;
+    Animator animator;
 
-    void FixedUpdate() => MoveAndRotate();
+    void Awake() {
+        shipCollider = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        shipInput = GetComponent<PlayerInput>();
+    }
+
+    void FixedUpdate() {
+        MoveAndRotate();
+    }
+
     void Update() => Animate();
 
     void MoveAndRotate() {
@@ -39,5 +54,19 @@ public class ShipBehavior : MonoBehaviour
 
     float getAngle(Vector2 vector2) {
         return 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * Mathf.Sign(vector2.x));
+    }
+
+    // If ship collides with a magnet, dock.
+    void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Dock") {
+            isDocked = true;
+            shipCollider.enabled = false;
+            transform.rotation = collision.transform.rotation;
+            this.enabled = false;
+            animator.enabled = false;
+            shipInput.enabled = false;
+
+            Instantiate(cat, transform.position, collision.transform.rotation);
+        }
     }
 }

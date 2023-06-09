@@ -1,26 +1,34 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class CatBehavior : MonoBehaviour
 {
-    public Transform planet;
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
-    
     public float gravityPull;
     public float walkingSpeed;
 
     // private vars
     Rigidbody2D body;
     Vector2 inputVector;
+    SpriteRenderer spriteRenderer;
+    Animator animator;
 
-    void Awake() => body = GetComponent<Rigidbody2D>();
+    [SerializeField]
+    Transform planet;
+
+    CinemachineVirtualCamera cinemachine;
+
+    void Awake() {
+        body = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
+    }
 
     void Update() {
         Animate();
         
         // Debug.Logs go here so as not to slow down physics simulations??
-        Debug.Log(inputVector.x);
     }
 
     void FixedUpdate() {
@@ -36,12 +44,8 @@ public class CatBehavior : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
     }
-    // InputSystem functions
-    void OnMove(InputValue value) {
-        inputVector = value.Get<Vector2>();
-    }
 
-    //homemade
+    void OnMove(InputValue value) => inputVector = value.Get<Vector2>();
 
     void Move() {
         if (inputVector.x > 0) {
@@ -58,7 +62,15 @@ public class CatBehavior : MonoBehaviour
         }
     }
 
-    void Gravitate() {
-        body.AddForce((planet.position - transform.position) * gravityPull);
+    // When cat spawns on planet, set planet and reset camera target.
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.tag == "Planet") {
+            planet = collider.gameObject.transform;
+            cinemachine.Follow = transform;
+            cinemachine.AddCinemachineComponent<CinemachineSameAsFollowTarget>();
+            Debug.Log("You're on " + collider.gameObject.name + "!");
+        }
     }
+
+    void Gravitate() => body.AddForce((planet.position - transform.position) * gravityPull);
 }
