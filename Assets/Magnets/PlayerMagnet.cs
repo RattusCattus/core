@@ -48,10 +48,6 @@ public class PlayerMagnet : MonoBehaviour
 
             rb.AddForce(force * power / Mathf.Pow(distance, mode));
         }
-
-        if (ShipBehavior.isDocked) {
-            isMagneting = false;
-        }
     }
 
     void OnCancelMagnet()

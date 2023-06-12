@@ -7,9 +7,10 @@ public class ShipBehavior : MonoBehaviour
     public Collider2D magnetCollider;
     public GameObject cat;
 
-    public float flightSpeed;
-    public float rotationSpeed;
-    public static bool isDocked;
+    [SerializeField]
+    float flightSpeed;
+    [SerializeField]
+    float rotationSpeed;
 
     Vector2 direction;
     PlayerInput shipInput;
@@ -59,14 +60,10 @@ public class ShipBehavior : MonoBehaviour
     // If ship collides with a magnet, dock.
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Dock") {
-            isDocked = true;
-            shipCollider.enabled = false;
-            transform.rotation = collision.transform.rotation;
-            this.enabled = false;
-            animator.enabled = false;
-            shipInput.enabled = false;
+            collision.gameObject.transform.GetChild(0).gameObject.SetActive(true);
 
             Instantiate(cat, transform.position, collision.transform.rotation);
+            Destroy(gameObject);
         }
     }
 }

@@ -4,15 +4,16 @@ using Cinemachine;
 
 public class CatBehavior : MonoBehaviour
 {
-    public float gravityPull;
-    public float walkingSpeed;
-
     // private vars
     Rigidbody2D body;
     Vector2 inputVector;
     SpriteRenderer spriteRenderer;
     Animator animator;
 
+    [SerializeField]
+    float gravityPull;
+    [SerializeField]
+    float walkingSpeed;
     [SerializeField]
     Transform planet;
 
@@ -67,6 +68,7 @@ public class CatBehavior : MonoBehaviour
         if (collider.gameObject.tag == "Planet") {
             planet = collider.gameObject.transform;
             cinemachine.Follow = transform;
+            cinemachine.m_Lens.OrthographicSize = 10f;
             cinemachine.AddCinemachineComponent<CinemachineSameAsFollowTarget>();
             Debug.Log("You're on " + collider.gameObject.name + "!");
         }
