@@ -48,9 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animators: []
-  planet: {fileID: 995031666906758911}
-  cat: {fileID: 6034051683522660315, guid: dc732c91dee9629598b7d140cbab4b36, type: 3}
-  ship: {fileID: 4124944974444192384, guid: d545cd28ed6c2c97ca6febb3cbd4fc5b, type: 3}
 --- !u!212 &995031666906758898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -71,7 +68,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
