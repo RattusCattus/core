@@ -5,20 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Space.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Cookia.unity
+    guid: bdf99a70f1a1716afb4c329beeaa02fd
+  - enabled: 1
     path: Assets/Scenes/Earf.unity
-    guid: 7494ec4a7029ea9608dfd30fe5dbc9db
+    guid: 0b402b56e9056c505ad57287ef1e5bb8
   - enabled: 1
-    path: Assets/Scenes/TestPlayer.unity
-    guid: e85536e41a9509201862307afb84d2f7
+    path: Assets/Scenes/Purpura.unity
+    guid: 6b2cb14e224e5cc2ea4e666db6bce787
   - enabled: 1
-    path: Assets/Scenes/Ship.unity
-    guid: a2522088c44de4c2d8a86548d0a68b3e
+    path: Assets/Scenes/Bluesclues.unity
+    guid: 9e6ce138216cc271c95dffb02eab6df1
+  - enabled: 1
+    path: Assets/Scenes/Virginia.unity
+    guid: edfe59f72cf64516e8f51e2db7e0c6c3
+  - enabled: 1
+    path: Assets/Scenes/Warehouse.unity
+    guid: 27b9e7b46292ef5ec9161e8f7e5c40ea
+  - enabled: 1
+    path: Assets/Scenes/Inside the Portal.unity
+    guid: 1884a8a7a655f3d149f5571c6774a599
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4a90bcc8060fafb58975dd54168f7a45, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 9f7b9cc1a2fde0eeab0f496e5b1df4ef, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 9d4b1c5a8e46e6272853d71fbb7289b6, type: 2}
