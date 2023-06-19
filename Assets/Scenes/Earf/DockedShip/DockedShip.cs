@@ -4,6 +4,7 @@ public class DockedShip : MonoBehaviour
 {
     GameObject highlight;
     float radius;
+    bool inRange;
 
     void Awake() {
         highlight = transform.GetChild(0).gameObject;
@@ -11,34 +12,26 @@ public class DockedShip : MonoBehaviour
     }
 
     void Update() {
-        // check if cat is inRange and if touched
-        if (Input.touchCount > 0 && !Cat.isWalking) {
+        // check if cat is inRange and if ship touched
+        if (inRange && Input.touchCount > 0 && !Cat.isWalking) {
             Touch touch = Input.GetTouch(0);
-            if ((Camera.main.ScreenToWorldPoint(touch.position) - transform.position).magnitude < radius + 2) {
-                Debug.Log("hi");
+            if ((Camera.main.ScreenToWorldPoint(touch.position) - transform.position).magnitude < (24)) {
                 GameManager.gameManager.Load("Space");
             }
         }
-
-        // check if ship is inRange and if touch
-        // if (inRange && Input.touchCount > 0 && !Ship.isFlying) {
-        //     Touch touch = Input.GetTouch(0);
-            
-        //     if ((Camera.main.ScreenToWorldPoint(touch.position) - transform.position).magnitude < radius) {
-        //         GameManager.Load(planetName);
-        //     } 
-        // }
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.tag == "Player") {
             highlight.SetActive(true);
+            inRange = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D collider) {
         if (collider.gameObject.tag == "Player") {
             highlight.SetActive(false);
+            inRange = false;
         }
     }
 }

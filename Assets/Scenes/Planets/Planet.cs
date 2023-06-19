@@ -20,6 +20,7 @@ public class Planet : MonoBehaviour
             
             if ((Camera.main.ScreenToWorldPoint(touch.position) - transform.position).magnitude < radius) {
                 GameManager.gameManager.Load(planetName);
+                inRange = false;
             } 
         }
     }

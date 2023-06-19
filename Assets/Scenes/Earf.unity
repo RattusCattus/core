@@ -839,9 +839,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2218148967403894360, guid: b73fd5548caf08498901f8d0b0c4c2b2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3243644965614415604, guid: b73fd5548caf08498901f8d0b0c4c2b2, type: 3}
       propertyPath: m_Name
       value: DockedShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730602566693490830, guid: b73fd5548caf08498901f8d0b0c4c2b2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b73fd5548caf08498901f8d0b0c4c2b2, type: 3}

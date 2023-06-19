@@ -10,11 +10,23 @@ public class GameManager : MonoBehaviour
     public Animator transition;
     CinemachineVirtualCamera cinemachine;
 
-    void Awake() {
-        gameManager = this;
-        DontDestroyOnLoad(this.gameObject);
-        DontDestroyOnLoad(canvas);
-        cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
+	void Awake()
+	{
+		if(gameManager == null)
+		{	
+			gameManager = this; // In first scene, make us the singleton.
+			DontDestroyOnLoad(this);
+		}
+		else if(gameManager != this)
+			Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
+    }
+
+    void FixedUpdate() {
+        if (cinemachine == null) {
+            cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>(); 
+        }
+
+        
     }
 
     public void Load(string sceneName) {
@@ -23,14 +35,13 @@ public class GameManager : MonoBehaviour
     }
 
     IEnumerator AnimateAndLoad(string sceneName) {
-        transition.SetTrigger("Load");
-        yield return new WaitForSeconds(2);
+        transition.SetBool("Load", true);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(sceneName);
+        transition.SetBool("Load", false);
     }
 
     public void ZoomCamera(float value) {
-        if (SceneManager.GetActiveScene().name == "Space") {
-            cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, value, 2f * Time.deltaTime);
-        }
+        cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, value, 2f * Time.deltaTime);
     }
 }
