@@ -163,7 +163,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 54507a129e64f9de59f5cffe7efbb8d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bacbb54d46efc7da3817b66cdbacc2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityPull: 30
+  gravityPull: 80
   walkingSpeed: 0.3
   planet: {fileID: 0}
 --- !u!50 &6034051683522660319
@@ -299,7 +299,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.0870628, y: -6.200276}
+  m_Offset: {x: -1.0870628, y: -3.3676586}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -310,7 +310,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.170433, y: 4.1240835}
+  m_Size: {x: 13.170433, y: 9.789318}
   m_EdgeRadius: 0
 --- !u!1 &8751620122310990571
 GameObject:

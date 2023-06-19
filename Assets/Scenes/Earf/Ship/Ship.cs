@@ -1,36 +1,21 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Cinemachine;
 
 public class Ship : MonoBehaviour
 {
     public Rigidbody2D body;
-    public Collider2D magnetCollider;
-    public GameObject cat;
+    public static bool isFlying;
 
-    [SerializeField]
-    float flightSpeed;
-    [SerializeField]
-    float rotationSpeed;
-
+    [SerializeField] float flightSpeed;
+    [SerializeField] float rotationSpeed;
     Vector2 direction;
-    PlayerInput shipInput;
-    SpriteRenderer spriteRenderer;
-    Collider2D shipCollider;
     Animator animator;
-    CinemachineVirtualCamera cinemachine;
-    string planetName;
-    GameObject highlight;
     GameObject headlight;
 
     void Awake() {
-        shipCollider = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        shipInput = GetComponent<PlayerInput>();
-        cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
-        highlight = transform.GetChild(0).gameObject;
-        headlight = transform.GetChild(1).gameObject;
+        headlight = transform.GetChild(0).gameObject;
+        isFlying = false;
     }
 
     void FixedUpdate() {
@@ -45,11 +30,14 @@ public class Ship : MonoBehaviour
         body.AddForce(direction * flightSpeed);
 
         if (direction.magnitude > 0) {
+            isFlying = true;
             if (direction.x < 0) {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, (getAngle(direction) * -1)), Time.deltaTime * rotationSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, (GetAngle(direction) * -1)), Time.deltaTime * rotationSpeed);
             } else {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, getAngle(direction)), Time.deltaTime * rotationSpeed);
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, GetAngle(direction)), Time.deltaTime * rotationSpeed);
             }
+        } else {
+            isFlying = false;
         }
     }
 
@@ -61,44 +49,17 @@ public class Ship : MonoBehaviour
         }
 
         if (Planet.inRange) {
-            CameraZoom(25);
+            GameManager.gameManager.ZoomCamera(25);
             ChangeSpeed(8);
-        } else if (!Planet.inRange && Cat.zoomCamera) {
-            CameraZoom(32);
+        } else {
+            GameManager.gameManager.ZoomCamera(32);
             ChangeSpeed(15);
         }
     }
 
     void OnMove(InputValue value) => direction = value.Get<Vector2>();
 
-    float getAngle(Vector2 vector2) {
-        return 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * Mathf.Sign(vector2.x));
-    }
+    void ChangeSpeed(float value) => flightSpeed = Mathf.Lerp(flightSpeed, value, 10f * Time.deltaTime);
 
-    void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Asteroid") {
-            highlight.SetActive(true);
-            // change highlight color
-        }
-
-        if (collider.gameObject.tag == "Player") {
-            highlight.SetActive(true);
-        }
-    }
-    void OnTriggerExit2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Planet") {
-        }
-
-        if (collider.gameObject.tag == "Player") {
-            highlight.SetActive(false);
-        }
-    }
-
-    void CameraZoom(float value) {
-        cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, value, 2f * Time.deltaTime);
-    }
-
-    void ChangeSpeed(float value) {
-        flightSpeed = Mathf.Lerp(flightSpeed, value, 10f * Time.deltaTime);
-    }
+    float GetAngle(Vector2 vector2) => 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * Mathf.Sign(vector2.x));
 }

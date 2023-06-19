@@ -5,26 +5,20 @@ using Cinemachine;
 public class Cat : MonoBehaviour
 {
     public static bool zoomCamera = true;
-    // private vars
+
+    [SerializeField] float gravityPull;
+    [SerializeField] float walkingSpeed;
+    [SerializeField] Transform planet;
     Rigidbody2D body;
     Vector2 inputVector;
     SpriteRenderer spriteRenderer;
     Animator animator;
-
-    [SerializeField]
-    float gravityPull;
-    [SerializeField]
-    float walkingSpeed;
-    [SerializeField]
-    Transform planet;
-
-    CinemachineVirtualCamera cinemachine;
+    public static bool isWalking;
 
     void Awake() {
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>();
         zoomCamera = false;
     }
 
@@ -42,8 +36,10 @@ public class Cat : MonoBehaviour
     void Animate() {
         animator.SetInteger("random", Random.Range(1, 4));
         if (inputVector.magnitude > 0) {
+            isWalking = true;
             animator.SetBool("isWalking", true);
         } else {
+            isWalking = false;
             animator.SetBool("isWalking", false);
         }
     }

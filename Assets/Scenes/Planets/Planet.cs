@@ -1,21 +1,27 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Planet : MonoBehaviour
 {
     public static bool inRange;   
     GameObject highlight;
     string planetName;
+    float radius;
     
     void Awake() {
         highlight = transform.GetChild(0).gameObject;
         planetName = gameObject.name;
+        radius = GetComponent<CircleCollider2D>().radius;
     }
 
     void Update() {
-        // if (inRange && planetClicked) {
-        //     SceneManager.LoadScene(planetName);
-        // }
+        // check if ship is inRange and if touch
+        if (inRange && Input.touchCount > 0 && !Ship.isFlying) {
+            Touch touch = Input.GetTouch(0);
+            
+            if ((Camera.main.ScreenToWorldPoint(touch.position) - transform.position).magnitude < radius) {
+                GameManager.gameManager.Load(planetName);
+            } 
+        }
     }
     
     void OnTriggerEnter2D(Collider2D collider) {
