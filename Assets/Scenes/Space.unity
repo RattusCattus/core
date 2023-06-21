@@ -1253,6 +1253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 2100191797}
   transition: {fileID: 286192097}
+  sceneSwitchDelay: 1
 --- !u!4 &553744027
 Transform:
   m_ObjectHideFlags: 0

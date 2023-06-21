@@ -111,7 +111,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Loading End
-  m_Speed: 0.75
+  m_Speed: 0.15
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 3307334190912509125}
@@ -138,7 +138,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Loading Start
-  m_Speed: 0.75
+  m_Speed: 0.4
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1736584851141768046}

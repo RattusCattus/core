@@ -17,6 +17,7 @@ public class DockedShip : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if ((Camera.main.ScreenToWorldPoint(touch.position) - transform.position).magnitude < (24)) {
                 GameManager.gameManager.Load("Space");
+                inRange = false;
             }
         }
     }

@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     public Canvas canvas;
     public Animator transition;
+    public float sceneSwitchDelay;
     CinemachineVirtualCamera cinemachine;
+    bool sceneLoaded = false;
 
 	void Awake()
 	{
@@ -19,6 +21,8 @@ public class GameManager : MonoBehaviour
 		}
 		else if(gameManager != this)
 			Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
+
+        SceneManager.sceneLoaded += OnSceneLoaded; 
     }
 
     void FixedUpdate() {
@@ -32,11 +36,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(AnimateAndLoad(sceneName));
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) => sceneLoaded = true;
+
     IEnumerator AnimateAndLoad(string sceneName) {
         transition.SetBool("Load", true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(sceneSwitchDelay);
         SceneManager.LoadScene(sceneName);
-        transition.SetBool("Load", false);
+        if (sceneLoaded) {
+            transition.SetBool("Load", false);
+        }
     }
 
     public void ZoomCamera(float value) {
