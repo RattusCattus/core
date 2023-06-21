@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
         if (cinemachine == null) {
             cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>(); 
         }
-
-        
     }
 
     public void Load(string sceneName) {
