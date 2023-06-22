@@ -27,7 +27,7 @@ public class Planet : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.tag == "Ship") {
-            Debug.Log("You're orbiting " + gameObject.name + "!");
+            GameManager.currentPlanet = gameObject.name;
             highlight.SetActive(true);
             inRange = true;
         }

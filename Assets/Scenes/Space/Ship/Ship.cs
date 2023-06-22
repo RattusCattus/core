@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,16 @@ public class Ship : MonoBehaviour
     Vector2 direction;
     Animator animator;
     GameObject headlight;
+    CinemachineVirtualCamera cinemachine;
 
     void Awake() {
         animator = GetComponent<Animator>();
         headlight = transform.GetChild(0).gameObject;
         isFlying = false;
+    }
+
+    void Start() {
+        transform.position = GameManager.planets[GameManager.currentPlanet];
     }
 
     void FixedUpdate() {
@@ -49,10 +55,10 @@ public class Ship : MonoBehaviour
         }
 
         if (Planet.inRange) {
-            GameManager.gameManager.ZoomCamera(25);
+            ZoomCamera(25);
             ChangeSpeed(8);
         } else {
-            GameManager.gameManager.ZoomCamera(32);
+            ZoomCamera(32);
             ChangeSpeed(15);
         }
     }
@@ -62,4 +68,11 @@ public class Ship : MonoBehaviour
     void ChangeSpeed(float value) => flightSpeed = Mathf.Lerp(flightSpeed, value, 10f * Time.deltaTime);
 
     float GetAngle(Vector2 vector2) => 360 - (Mathf.Atan2(vector2.x, vector2.y) * Mathf.Rad2Deg * Mathf.Sign(vector2.x));
+
+    void ZoomCamera(float value) {
+        if (!cinemachine) {
+            cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>(); 
+        }
+        cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, value, 2f * Time.deltaTime);
+    }
 }

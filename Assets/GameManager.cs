@@ -1,33 +1,36 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Cinemachine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    public static string currentPlanet = "Earf";
     public static GameManager gameManager;
-    public Canvas canvas;
-    public Animator transition;
-    public float sceneSwitchDelay;
-    CinemachineVirtualCamera cinemachine;
+    [SerializeField] Animator transition;
+    [SerializeField] float sceneSwitchDelay;
+    public static Dictionary<string, Vector3> planets;
     bool sceneLoaded = false;
+    bool ran = false;
 
-	void Awake()
-	{
-		if(gameManager == null)
-		{	
+	void Awake() {
+		if (!gameManager) {	
 			gameManager = this; // In first scene, make us the singleton.
 			DontDestroyOnLoad(this);
-		}
-		else if(gameManager != this)
-			Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
+		} else if (gameManager != this) {
+            Destroy(gameObject); // On reload, singleton already set, so destroy duplicate.
+        }
 
-        SceneManager.sceneLoaded += OnSceneLoaded; 
-    }
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
-    void FixedUpdate() {
-        if (cinemachine == null) {
-            cinemachine = Camera.main.GetComponentInChildren<CinemachineVirtualCamera>(); 
+        if (!ran) {
+            planets = new Dictionary<string, Vector3>();
+
+            // fill dict with planets
+            foreach (GameObject planet in GameObject.FindGameObjectsWithTag("Planet")) {
+                planets.Add(planet.name, planet.transform.position);
+            }
+            ran = true;
         }
     }
 
@@ -45,9 +48,5 @@ public class GameManager : MonoBehaviour
         if (sceneLoaded) {
             transition.SetBool("Load", false);
         }
-    }
-
-    public void ZoomCamera(float value) {
-        cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, value, 2f * Time.deltaTime);
     }
 }
