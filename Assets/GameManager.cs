@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public static string currentPlanet = "Earf";
+    public static string currentPlanet = "BluesClues";
     public static GameManager gameManager;
     [SerializeField] Animator transition;
     [SerializeField] float sceneSwitchDelay;
