@@ -8,21 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Space.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Cookia.unity
-    guid: bdf99a70f1a1716afb4c329beeaa02fd
+    guid: 45200d6c411f0ce45a1b6f50bcf9f7a9
   - enabled: 1
     path: Assets/Scenes/Earf.unity
     guid: 0b402b56e9056c505ad57287ef1e5bb8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Purpura.unity
-    guid: 6b2cb14e224e5cc2ea4e666db6bce787
-  - enabled: 0
-    path: Assets/Scenes/Bluesclues.unity
-    guid: 9e6ce138216cc271c95dffb02eab6df1
-  - enabled: 0
+    guid: 8205ddda3527ebf47a4bfb3d4dfc3871
+  - enabled: 1
+    path: Assets/Scenes/BluesClues.unity
+    guid: 84adab59c9af0f24fbbf1107db5bc78d
+  - enabled: 1
     path: Assets/Scenes/Virginia.unity
-    guid: edfe59f72cf64516e8f51e2db7e0c6c3
+    guid: 82a800a74b63ddd46acacc0ef1fefc62
   - enabled: 0
     path: Assets/Scenes/Warehouse.unity
     guid: 27b9e7b46292ef5ec9161e8f7e5c40ea
