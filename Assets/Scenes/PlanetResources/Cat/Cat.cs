@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Cinemachine;
 
 public class Cat : MonoBehaviour
 {
